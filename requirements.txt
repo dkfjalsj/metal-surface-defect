@@ -1,0 +1,13 @@
+# Python 3.12 (64비트) 기준 초기 실행 의존성
+# TensorFlow 2.21.0의 CPython 3.12 Windows/Linux 배포 파일 확인
+# 나머지 패키지는 pip가 의존성을 해결하며, 설치 및 Notebook 검증은 별도로 필요합니다.
+# 최종 배포 전 검증된 실제 사용 버전으로 다시 정리합니다.
+# 개발용 ipykernel은 별도 설치합니다.
+tensorflow==2.21.0
+numpy
+pandas
+matplotlib
+seaborn
+pillow
+scikit-learn
+streamlit
