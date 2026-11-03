@@ -1,0 +1,46 @@
+{
+  "model_name": "NEU-CLS CNN",
+  "dataset_name": "NEU Surface Defect Database (NEU-CLS)",
+  "image_size": [
+    200,
+    200
+  ],
+  "input_channels": 1,
+  "classes": [
+    {
+      "label": 0,
+      "code": "Cr",
+      "name": "Crazing"
+    },
+    {
+      "label": 1,
+      "code": "In",
+      "name": "Inclusion"
+    },
+    {
+      "label": 2,
+      "code": "Pa",
+      "name": "Patches"
+    },
+    {
+      "label": 3,
+      "code": "PS",
+      "name": "Pitted Surface"
+    },
+    {
+      "label": 4,
+      "code": "RS",
+      "name": "Rolled-in Scale"
+    },
+    {
+      "label": 5,
+      "code": "Sc",
+      "name": "Scratches"
+    }
+  ],
+  "training_epochs": 20,
+  "best_epoch": 17,
+  "validation_accuracy": 0.9444444179534912,
+  "validation_loss": 0.1850132942199707,
+  "validation_macro_f1": 0.9448914825087651
+}
