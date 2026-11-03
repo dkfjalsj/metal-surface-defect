@@ -108,7 +108,14 @@ button[kind="secondary"] { background: var(--sage-white); color: var(--sage-text
 button[kind="secondary"]:hover { background: var(--sage-light); color: var(--sage-text); border-color: var(--sage-accent); }
 [data-testid="stMetric"] { background: var(--sage-light); border-radius: 10px; padding: 12px 16px; }
 [data-testid="stMetricValue"] { color: var(--sage-deep); }
-[data-testid="stImage"] img { max-height: 260px; object-fit: contain; }
+/* 이미지와 확률 그래프를 원래 비율로 축소하고 공통 높이 제한 제거함 */
+[data-testid="stImage"] img { max-width: 100%; height: auto; object-fit: contain; }
+/* 화면 너비 대신 Grad-CAM 카드의 실제 가용 너비로 배치 전환함 */
+.st-key-gradcam_card { container-type: inline-size; container-name: gradcam; }
+@container gradcam (max-width: 480px) {
+    .st-key-gradcam_card > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] { flex-direction: column; flex-wrap: nowrap; }
+    .st-key-gradcam_card > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] { width: 100%; flex: 0 0 auto; min-width: 0; }
+}
 [data-testid="stDataFrame"] { border: 1px solid var(--sage-border); border-radius: 10px; overflow: hidden; }
 [data-testid="stSelectbox"] [data-baseweb="select"] > div { background: var(--sage-white); border-color: var(--sage-border); color: var(--sage-text); }
 [data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within { border-color: var(--sage-deep); }
