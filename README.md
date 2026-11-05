@@ -9,7 +9,7 @@
 | 인원 | 1명 (개인 프로젝트) |
 | 역할 | 데이터 분석 · CNN 설계와 학습 · 평가와 오분류 분석 · Grad-CAM · 경량화 비교 실험 · Streamlit 웹앱과 배포 전체 |
 | 배포 | [Streamlit 웹앱 바로가기](https://metal-surface-defect-nanmcuhpbmfgmsbcajwknc.streamlit.app/) |
-| 발표자료 | [프로젝트 발표자료 (PDF, 31쪽)](docs/금속표면불량분류_발표자료.pdf) |
+| 프로젝트 보고서 | [프로젝트 최종보고서 (PDF, 31쪽)](docs/금속표면불량분류_발표자료.pdf) |
 | 데이터 | NEU Surface Defect Database (NEU-CLS) |
 
 ## 🚀 바로가기
@@ -17,11 +17,11 @@
 | 구분 | 링크 |
 |---|---|
 | 웹앱 (Streamlit Cloud) | https://metal-surface-defect-nanmcuhpbmfgmsbcajwknc.streamlit.app/ |
-| 발표자료 | [docs/금속표면불량분류_발표자료.pdf](docs/금속표면불량분류_발표자료.pdf) — 분석 과정 · 그래프 · 실험 세부 결과 |
+| 프로젝트 보고서 | [docs/금속표면불량분류_발표자료.pdf](docs/금속표면불량분류_발표자료.pdf) — 분석 과정 · 그래프 · 실험 세부 결과 |
 | 분석 노트북 | [metal_defect.ipynb](metal_defect.ipynb) — 데이터 분석부터 Grad-CAM까지 |
 | 비교 실험 노트북 | [model_comparison.ipynb](model_comparison.ipynb) — Baseline CNN vs GAP CNN |
 
-> 웹앱에 금속 표면 이미지(PNG · JPG · BMP)를 최대 20장까지 올리면 결함 유형, 클래스별 예측 확률, Grad-CAM 결과를 바로 확인할 수 있습니다.
+> PNG · JPG · BMP 이미지를 최대 20장까지 업로드한 뒤 **'분류 시작'** 버튼을 누르면 결함 유형, 예측 확률, Grad-CAM 결과를 확인할 수 있습니다.
 
 ## 목차
 
@@ -34,7 +34,7 @@
 | 05 | Grad-CAM | 정답 예측과 오분류 예측의 관심 영역 |
 | 06 | 추가 실험 | GAP CNN 경량화 비교 · 최종 모델 판단 |
 | 07 | 웹앱과 배포 | Streamlit 화면 · Community Cloud 배포 |
-| 08 | 결론 및 회고 | 결과 · 트러블슈팅 · 한계 · 배운 점 |
+| 08 | 결론 및 회고 | 결과 · 문제 분석 및 배포 과정 · 한계 · 배운 점 |
 
 ---
 
@@ -313,7 +313,7 @@ flowchart LR
 | 경량화 실험 | GAP로 파라미터 98.06% 감소, 검증 정확도 4.07%p 하락 → Baseline 유지 |
 | 서비스 | Streamlit 판독 보조 프로토타입 공개 배포 |
 
-## 8.2 트러블슈팅
+## 8.2 문제 분석 및 배포 과정
 
 ### ① 평균 정확도 뒤에 숨은 스크래치 오분류
 
@@ -321,7 +321,7 @@ flowchart LR
 |---|---|
 | 문제 | 전체 Test 정확도는 93.33%로 높았지만, 어떤 유형이 약한지는 보이지 않음 |
 | 원인 | 평균 지표는 클래스별 편차를 가림 |
-| 해결 | 혼동행렬 · 클래스별 지표로 Scratches Recall 80% 확인 → 오분류 이미지 확인 → Grad-CAM으로 관심 영역 비교 |
+| 분석 과정 | 혼동행렬 · 클래스별 지표로 Scratches Recall 80% 확인 → 오분류 이미지 확인 → Grad-CAM으로 관심 영역 비교 |
 | 결과 | 오류 18건 중 9건이 Scratches이며, 주변 질감에 기여도가 몰린 사례를 찾음 |
 
 ### ② 배포 시 TensorFlow 설치 오류
@@ -385,7 +385,7 @@ metal-surface-defect/
 │   ├── cnn_gap_model.keras    # 비교 실험용 GAP CNN
 │   └── model_info.json        # 클래스 정보 · 검증 · 테스트 지표
 ├── docs/
-│   ├── 금속표면불량분류_발표자료.pdf
+│   ├── 금속표면불량분류_발표자료.pdf   # 프로젝트 최종보고서
 │   └── images/                # README 그래프 · 화면
 ├── requirements.txt
 └── .devcontainer/
